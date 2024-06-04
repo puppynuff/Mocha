@@ -1,0 +1,51 @@
+/* 
+    testing block comments
+*/
+
+// Testing line comments.
+
+// Single line characters
+(
+)
+{
+}
+[
+]
+,
+.
+-
++
+;
+/
+*
+
+// One or two characters
+!
+!=
+>
+>=
+<
+<=
+
+// Literals
+IDENTIFIER // For any text name (for like variables and shit)
+"this is a string!"
+12131.12312 // Number
+
+// Identifiers
+and
+class
+else
+false
+function
+for
+if
+null
+or
+print
+return
+super
+this
+true
+let
+while
