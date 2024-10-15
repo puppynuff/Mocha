@@ -1,7 +1,7 @@
 // Why cant I just name my types whatever I want to???
 // Like forcing me to put it in camel case is aaaaa.
 #[allow(non_camel_case_types)]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum TokenType {
     // Single character types
     LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -28,7 +28,7 @@ pub enum TokenType {
 
 
 // One line made me have to derive clone to all other structs in this file
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Token {
     pub token_type: TokenType,
     pub lexeme: String,
@@ -68,5 +68,6 @@ impl Token {
 #[derive(Debug, Clone)]
 pub struct Literal {
     pub string_data: Option<String>,
-    pub number_data: Option<f32>
+    pub number_data: Option<f32>,
+    pub bool_data: Option<bool>
 }

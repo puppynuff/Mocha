@@ -235,7 +235,8 @@ impl Scanner {
 
         self.add_token(TokenType::STRING, Some(Literal {
             string_data: Some(value),
-            number_data: None
+            number_data: None,
+            bool_data: None
         }));
     }
 
@@ -265,7 +266,8 @@ impl Scanner {
 
         self.add_token(TokenType::NUMBER, Some(Literal {
             string_data: None,
-            number_data: Some(value)
+            number_data: Some(value),
+            bool_data: None
         }));
     }
 

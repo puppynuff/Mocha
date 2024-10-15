@@ -2,6 +2,8 @@
 // I actually decided to put comments in this.
 
 mod lexer;
+mod parser;
+mod interpreter;
 
 use std::env;
 
@@ -12,10 +14,23 @@ use std::env;
 fn main() {
     let mut args : Vec<String> = env::args().collect();
     
+    let mut test_lexer = false;
+    let mut test_parse = false;
+
+    for arg in &args {
+        if arg == "--test-lexer" {
+            test_lexer = true;
+        }
+
+        if arg == "--test-parse" {
+            test_parse = true;
+        }
+    }
+
     args.push("".to_string());
 
-    if args[1].trim() == "" {
-        lexer::run_functions::run_prompt();
+    if args[1].trim() == "" || args[1].starts_with("--") {
+        lexer::run_functions::run_prompt(test_parse, test_lexer);
         return;
     }
 
@@ -28,7 +43,7 @@ fn main() {
         }
 
         _ => {
-            lexer::run_functions::run_file(args[1].clone());
+            lexer::run_functions::run_file(args[1].clone(), test_parse, test_lexer);
             return;
         }
     }
@@ -37,6 +52,8 @@ fn main() {
 
 fn help() {
     println!("Mocha ~ Help");
-    println!("[blank] opens interactive terminal");
-    println!("[file name]  runs file (starts at current working directory)");
+    println!("[blank]       opens interactive terminal");
+    println!("[file name]   runs file (starts at current working directory)");
+    println!("--test-lexer  Shows the output from the lexer");
+    println!("--test-parse  Shows the output from the parser (Note: It is not set up to output, might not make any sense)");
 }
